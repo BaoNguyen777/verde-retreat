@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight, BedDouble, CalendarDays, Check, MapPin, Users, Waves, Wifi } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BedDouble, CalendarDays, Check, MapPin, Users, Waves } from "lucide-react";
 
 const stays = [
   { name: "Garden Pool Villa", kind: "ONE BEDROOM · PRIVATE POOL", price: "₫4.200.000", size: "92 m²", guests: "2 guests", beds: "1 king bed", image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=88&fit=crop", features: ["Private plunge pool", "Tropical garden", "Outdoor rain shower"], tag: "MOST LOVED" },
