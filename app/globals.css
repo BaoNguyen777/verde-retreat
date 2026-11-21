@@ -25,7 +25,7 @@ section[id] { scroll-margin-top: 88px; }
 .header-cta { display: inline-flex; align-items: center; gap: 18px; border: 1px solid rgba(255,255,255,.65); padding: 14px 17px; }
 .header-cta:hover { background: #f4f2e9; color: #20392f; }
 .hero-image { transform: scale(1.015); animation: hero-settle 1.5s ease-out both; }
-.hero-shade { background: linear-gradient(90deg, rgba(17,39,29,.74) 0%, rgba(17,39,29,.27) 55%, rgba(17,39,29,.05) 100%), linear-gradient(0deg, rgba(17,39,29,.55), transparent 58%, rgba(17,39,29,.15); }
+.hero-shade { background: linear-gradient(90deg, rgba(17,39,29,.74) 0%, rgba(17,39,29,.27) 55%, rgba(17,39,29,.05) 100%), linear-gradient(0deg, rgba(17,39,29,.55), transparent 58%, rgba(17,39,29,.15)); }
 .hero-title { text-shadow: 0 3px 35px rgba(0,0,0,.08); }
 .hero-link, .text-link { display: inline-flex; align-items: center; gap: 25px; border-bottom: 1px solid currentColor; padding-bottom: 12px; font-size: 8px; letter-spacing: .18em; transition: gap .25s ease, opacity .25s ease; }
 .hero-link:hover, .text-link:hover { gap: 34px; opacity: .72; }
