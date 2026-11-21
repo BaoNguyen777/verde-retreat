@@ -1,7 +1,7 @@
 import Image from "next/image";
 import {
-  ArrowDown, ArrowRight, ArrowUpRight, BedDouble, Check, ChevronRight,
-  Compass, Leaf, MapPin, Sparkles, Sun, Waves, Wind
+  ArrowDown, ArrowRight, ArrowUpRight, BedDouble, Check,
+  Leaf, MapPin, Sparkles, Users, Waves, Wind
 } from "lucide-react";
 
 const stays = [
@@ -232,5 +232,5 @@ export default function VerdeRetreatPage() {
 }
 
 function UsersIcon() {
-  return <Compass size={13}/>;
+  return <Users size={13}/>;
 }
