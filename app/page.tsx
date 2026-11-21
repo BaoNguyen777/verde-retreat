@@ -1,44 +1,236 @@
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight, BedDouble, CalendarDays, Check, MapPin, Users, Waves } from "lucide-react";
+import {
+  ArrowDown, ArrowRight, ArrowUpRight, BedDouble, Check, ChevronRight,
+  Compass, Leaf, MapPin, Sparkles, Sun, Waves, Wind
+} from "lucide-react";
 
 const stays = [
-  { name: "Garden Pool Villa", kind: "ONE BEDROOM · PRIVATE POOL", price: "₫4.200.000", size: "92 m²", guests: "2 guests", beds: "1 king bed", image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=88&fit=crop", features: ["Private plunge pool", "Tropical garden", "Outdoor rain shower"], tag: "MOST LOVED" },
-  { name: "Canopy Forest Suite", kind: "FOREST VIEW · PRIVATE DECK", price: "₫3.100.000", size: "68 m²", guests: "2 guests", beds: "1 king bed", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&q=88&fit=crop", features: ["Forest-facing deck", "Rain shower", "Breakfast for two"], tag: "QUIET ESCAPE" },
-  { name: "Horizon Two-Bedroom", kind: "OCEAN VIEW · FAMILY VILLA", price: "₫6.800.000", size: "140 m²", guests: "4 guests", beds: "2 bedrooms", image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=88&fit=crop", features: ["Ocean-facing terrace", "Separate living room", "Private pool"], tag: "MORE SPACE" },
+  {
+    number: "01",
+    name: "Garden Pool Villa",
+    category: "ONE BEDROOM · PRIVATE POOL",
+    size: "92 m²",
+    guests: "2 guests",
+    price: "₫4.200.000",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1500&q=90&fit=crop",
+    note: "A secluded garden sanctuary, made for slow mornings and long afternoons by your own pool.",
+    features: ["Private plunge pool", "Tropical garden", "Outdoor rain shower"],
+  },
+  {
+    number: "02",
+    name: "Canopy Forest Suite",
+    category: "FOREST VIEW · PRIVATE DECK",
+    size: "68 m²",
+    guests: "2 guests",
+    price: "₫3.100.000",
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1500&q=90&fit=crop",
+    note: "Wake to the sounds of the island, with a quiet deck looking out into the green canopy.",
+    features: ["Forest-facing deck", "Rain shower", "Breakfast for two"],
+  },
+  {
+    number: "03",
+    name: "Horizon Residence",
+    category: "TWO BEDROOMS · OCEAN VIEW",
+    size: "140 m²",
+    guests: "4 guests",
+    price: "₫6.800.000",
+    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1500&q=90&fit=crop",
+    note: "Room to gather, space to retreat. A generous hideaway for families and friends.",
+    features: ["Ocean-facing terrace", "Separate living room", "Private pool"],
+  },
 ];
 
-const experiences = [
-  { title: "Island table", time: "SLOW DINING", copy: "Seasonal menus shaped by local produce, fresh catch and the flavours of the island.", image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&q=85&fit=crop" },
-  { title: "Garden mornings", time: "NATURE & WELLNESS", copy: "Find a quieter rhythm with garden walks, open-air rituals and time to reset.", image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1000&q=85&fit=crop" },
-  { title: "Blue hour", time: "SEA & SUNSET", copy: "Let the afternoon drift into a slow sunset by the water.", image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1000&q=85&fit=crop" },
+const rituals = [
+  {
+    number: "01",
+    eyebrow: "THE TABLE",
+    title: "Island, served slowly.",
+    copy: "Fresh island produce, just-caught seafood and thoughtful menus that follow the seasons.",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=88&fit=crop",
+  },
+  {
+    number: "02",
+    eyebrow: "THE GARDEN",
+    title: "A little closer to green.",
+    copy: "Wander beneath the palms, breathe in the morning air and let the day find its own pace.",
+    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=88&fit=crop",
+  },
+  {
+    number: "03",
+    eyebrow: "THE SEA",
+    title: "Stay for the blue hour.",
+    copy: "Follow the changing light to the shore, where the island slips gently into evening.",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1200&q=88&fit=crop",
+  },
 ];
+
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="eyebrow">{children}</p>;
+}
 
 export default function VerdeRetreatPage() {
   return (
-    <main id="top" className="min-h-screen bg-[#f5f4ee] text-[#23382e]">
-      <header className="absolute z-30 w-full text-white"><div className="mx-auto flex h-[82px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-14"><nav className="hidden items-center gap-7 text-[9px] tracking-[.15em] md:flex"><a href="#stay" className="hover:text-[#d7d8bd]">ACCOMMODATION</a><a href="#experience" className="hover:text-[#d7d8bd]">EXPERIENCES</a><a href="#story" className="hover:text-[#d7d8bd]">OUR PLACE</a></nav><a href="#top" className="absolute left-1/2 -translate-x-1/2 font-serif text-2xl tracking-[.2em]">VERDE<span className="align-top text-[9px]">®</span></a><a href="#stay" className="inline-flex items-center gap-3 border border-white/70 px-4 py-3 text-[9px] tracking-[.13em] transition hover:bg-white hover:text-[#23382e]">FIND YOUR STAY <ArrowUpRight size={13}/></a></div></header>
+    <main id="top" className="overflow-hidden bg-[#f4f2e9] text-[#20392f]">
+      <header className="site-header absolute inset-x-0 top-0 z-30 text-white">
+        <div className="mx-auto flex h-[88px] max-w-[1480px] items-center justify-between px-5 sm:px-8 lg:px-14">
+          <a href="#top" aria-label="Verde Retreat home" className="brand-mark">
+            VERDE<span>®</span>
+          </a>
+          <nav aria-label="Main navigation" className="hidden items-center gap-9 md:flex">
+            <a href="#stay">THE STAYS</a>
+            <a href="#story">OUR PLACE</a>
+            <a href="#rituals">EXPERIENCES</a>
+          </nav>
+          <a href="#enquire" className="header-cta">
+            <span>PLAN YOUR STAY</span><ArrowUpRight size={15} />
+          </a>
+        </div>
+      </header>
 
-      <section className="relative flex min-h-[700px] items-end overflow-hidden bg-[#29483b] px-5 pb-14 pt-36 sm:px-8 lg:min-h-[790px] lg:px-14 lg:pb-20">
-        <Image src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=2200&q=90&fit=crop" alt="A calm tropical resort framed by lush gardens and a pool" fill priority unoptimized sizes="100vw" className="object-cover object-center"/>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#142c23]/75 via-[#142c23]/30 to-transparent"/><div className="absolute inset-0 bg-gradient-to-t from-[#142c23]/70 via-transparent to-[#142c23]/10"/>
-        <div className="relative mx-auto w-full max-w-[1320px] text-white"><p className="text-[9px] tracking-[.24em] text-[#d9dec9]">PHU QUOC ISLAND · VIETNAM</p><h1 className="mt-7 max-w-4xl font-serif text-[clamp(4rem,9vw,8.5rem)] leading-[.85] tracking-[-.05em]">Stay close<br/>to <em className="font-normal">nature.</em></h1><div className="mt-9 flex flex-wrap items-end justify-between gap-7"><p className="max-w-sm text-[13px] leading-7 text-white/80">Private villas, tropical gardens and thoughtful island experiences. A slower way to stay on Phu Quoc.</p><a href="#stay" className="inline-flex items-center gap-8 border-b border-white/70 pb-3 text-[9px] tracking-[.16em]">EXPLORE OUR VILLAS <ArrowRight size={14}/></a></div></div>
-        <span className="absolute bottom-7 right-8 hidden text-[8px] tracking-[.2em] text-white/60 lg:block">10°13' N — 103°58' E</span>
+      <section className="hero relative flex min-h-[760px] items-end overflow-hidden bg-[#263e32] px-5 pb-14 pt-36 text-white sm:px-8 lg:min-h-[900px] lg:px-14 lg:pb-20">
+        <Image
+          src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=2400&q=92&fit=crop"
+          alt="A tranquil tropical resort pool surrounded by lush greenery"
+          fill priority unoptimized sizes="100vw"
+          className="hero-image object-cover object-center"
+        />
+        <div className="hero-shade absolute inset-0" />
+        <div className="relative z-10 mx-auto w-full max-w-[1360px]">
+          <div className="mb-8 flex items-center gap-3 text-[9px] tracking-[.28em] text-[#e2e4d5]">
+            <span className="h-px w-9 bg-[#d5d9c6]" /> PHU QUOC ISLAND · VIETNAM
+          </div>
+          <h1 className="hero-title max-w-5xl font-serif text-[clamp(4.3rem,10.5vw,10rem)] leading-[.79] tracking-[-.065em]">
+            Find your<br /><em className="font-normal">elsewhere.</em>
+          </h1>
+          <div className="mt-12 flex flex-col justify-between gap-8 border-t border-white/30 pt-6 sm:flex-row sm:items-end">
+            <p className="max-w-[360px] text-[13px] leading-7 text-white/80">
+              A quieter kind of island escape. Thoughtful villas, untamed gardens and the gentle rhythm of Phu Quoc.
+            </p>
+            <a href="#story" className="hero-link">
+              DISCOVER VERDE <ArrowDown size={15} />
+            </a>
+          </div>
+        </div>
+        <div className="absolute right-8 top-1/2 z-10 hidden -translate-y-1/2 [writing-mode:vertical-rl] lg:block">
+          <span className="text-[8px] tracking-[.3em] text-white/70">10°13&apos; N — 103°58&apos; E</span>
+        </div>
+        <div className="absolute bottom-8 right-8 z-10 hidden text-right text-[8px] tracking-[.22em] text-white/60 sm:block">
+          <span>01 / 04</span>
+        </div>
       </section>
 
-      <section className="border-b border-[#dfe2d7] bg-white"><div className="mx-auto grid max-w-[1320px] grid-cols-2 gap-5 px-5 py-7 sm:grid-cols-4 sm:px-8 lg:px-14"><div className="flex items-center gap-3"><MapPin size={17} className="text-[#87977b]"/><div><p className="text-[9px] tracking-[.1em]">LOCATION</p><p className="mt-1 text-[10px] text-[#7c897e]">Phu Quoc Island</p></div></div><div className="flex items-center gap-3"><Waves size={17} className="text-[#87977b]"/><div><p className="text-[9px] tracking-[.1em]">SETTING</p><p className="mt-1 text-[10px] text-[#7c897e]">Tropical hideaway</p></div></div><div className="flex items-center gap-3"><BedDouble size={17} className="text-[#87977b]"/><div><p className="text-[9px] tracking-[.1em]">ACCOMMODATION</p><p className="mt-1 text-[10px] text-[#7c897e]">Private villas & suites</p></div></div><div className="flex items-center gap-3"><CalendarDays size={17} className="text-[#87977b]"/><div><p className="text-[9px] tracking-[.1em]">STAY YOUR WAY</p><p className="mt-1 text-[10px] text-[#7c897e]">Short breaks to long stays</p></div></div></div></section>
-
-      <section id="stay" className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24">
-        <div className="flex flex-wrap items-end justify-between gap-6"><div><p className="text-[9px] tracking-[.2em] text-[#849477]">CHOOSE YOUR SPACE</p><h2 className="mt-3 font-serif text-4xl tracking-[-.045em] sm:text-6xl">Find your kind of quiet.</h2><p className="mt-3 max-w-lg text-[12px] leading-6 text-[#748176]">Every stay has its own character. Compare the spaces, find the right fit and start planning your time on the island.</p></div><span className="text-[9px] tracking-[.13em] text-[#849477]">01 — 03 / OUR STAYS</span></div>
-        <div className="mt-9 grid gap-7 lg:grid-cols-3">{stays.map((stay)=><article key={stay.name} className="group flex flex-col border border-[#e0e3d9] bg-white"><div className="relative aspect-[5/4] overflow-hidden bg-[#dfe4d8]"><Image src={stay.image} alt={stay.name} fill unoptimized sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.04]"/><span className="absolute left-4 top-4 bg-[#f5f4ee] px-3 py-2 text-[8px] tracking-[.13em]">{stay.tag}</span></div><div className="flex flex-1 flex-col p-5 sm:p-6"><p className="text-[8px] tracking-[.17em] text-[#849477]">{stay.kind}</p><div className="mt-2 flex items-start justify-between gap-3"><h3 className="font-serif text-2xl">{stay.name}</h3><span className="whitespace-nowrap pt-1 text-[10px]">{stay.size}</span></div><div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[10px] text-[#7b887c]"><span className="inline-flex items-center gap-1.5"><Users size={13}/>{stay.guests}</span><span className="inline-flex items-center gap-1.5"><BedDouble size={13}/>{stay.beds}</span></div><ul className="mt-5 space-y-2 border-t border-[#e5e8df] pt-4">{stay.features.map(feature=><li key={feature} className="flex items-center gap-2 text-[10px] text-[#6e7e71]"><Check size={12} className="text-[#87977b]"/>{feature}</li>)}</ul><div className="mt-auto flex items-end justify-between gap-3 border-t border-[#e5e8df] pt-5"><div><p className="text-[8px] tracking-[.12em] text-[#89958a]">FROM / NIGHT</p><p className="mt-1 text-[15px]">{stay.price}</p></div><a href="#enquire" className="inline-flex items-center gap-2 bg-[#29483b] px-4 py-3 text-[8px] tracking-[.12em] text-white transition hover:bg-[#496653]">ENQUIRE <ArrowUpRight size={13}/></a></div></div></article>)}</div>
-        <p className="mt-5 text-[9px] leading-5 text-[#879287]">Rates shown are illustrative template content. Replace with live seasonal pricing and availability before launch.</p>
+      <section className="intro-strip border-b border-[#dcded3] bg-[#f4f2e9]">
+        <div className="mx-auto grid max-w-[1360px] gap-7 px-5 py-8 sm:grid-cols-3 sm:px-8 lg:grid-cols-3 lg:px-14 lg:py-10">
+          <div className="flex items-center gap-4"><MapPin className="text-[#87977b]" size={19}/><div><p className="eyebrow">A LITTLE OFF THE MAP</p><p className="mt-1 text-[12px]">Phu Quoc, Vietnam</p></div></div>
+          <div className="flex items-center gap-4"><Leaf className="text-[#87977b]" size={19}/><div><p className="eyebrow">ROOTED IN NATURE</p><p className="mt-1 text-[12px]">Gardens, forest and sea</p></div></div>
+          <div className="flex items-center gap-4"><Wind className="text-[#87977b]" size={19}/><div><p className="eyebrow">MADE FOR SLOW LIVING</p><p className="mt-1 text-[12px]">Private villas & suites</p></div></div>
+        </div>
       </section>
 
-      <section id="story" className="bg-[#e8ebe1]"><div className="mx-auto grid max-w-[1440px] lg:grid-cols-[1fr_1fr]"><div className="flex flex-col justify-center px-5 py-16 sm:px-10 lg:px-16 lg:py-24"><p className="text-[9px] tracking-[.2em] text-[#849477]">THE VERDE DIFFERENCE</p><h2 className="mt-5 max-w-xl font-serif text-5xl leading-[.96] tracking-[-.04em] sm:text-7xl">A place to be.<br/><em className="font-normal">Not just to stay.</em></h2><p className="mt-7 max-w-lg text-[13px] leading-7 text-[#6f7c70]">We believe a memorable stay is made from the details: the light through the leaves, a thoughtful welcome, a room that feels considered and enough space to find your own rhythm.</p><div className="mt-9 grid grid-cols-2 gap-5 border-t border-[#cfd7ca] pt-5"><div><p className="font-serif text-3xl">18</p><p className="mt-1 text-[8px] tracking-[.13em] text-[#879287]">PRIVATE STAYS</p></div><div><p className="font-serif text-3xl">01</p><p className="mt-1 text-[8px] tracking-[.13em] text-[#879287]">ISLAND TO EXPLORE</p></div></div></div><div className="relative min-h-[400px] sm:min-h-[580px]"><Image src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1400&q=88&fit=crop" alt="Quiet resort pool surrounded by tropical greenery" fill unoptimized sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover"/></div></div></section>
+      <section id="story" className="story-section mx-auto grid max-w-[1480px] gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[.92fr_1.08fr] lg:gap-20 lg:px-14 lg:py-32">
+        <div className="flex flex-col justify-center">
+          <SectionEyebrow>THE ART OF GETTING AWAY</SectionEyebrow>
+          <h2 className="editorial-heading mt-7 max-w-[620px] font-serif text-5xl leading-[.98] tracking-[-.055em] sm:text-7xl lg:text-[6.4rem]">
+            Less rush.<br />More <em className="font-normal">wonder.</em>
+          </h2>
+          <p className="mt-8 max-w-[440px] text-[13px] leading-7 text-[#718074]">
+            Verde is a place to return to what matters. The warmth of the sun, the sound of leaves moving in the breeze, and the luxury of having nowhere else to be.
+          </p>
+          <a href="#stay" className="text-link mt-9 w-fit">FIND YOUR PLACE <ArrowUpRight size={15}/></a>
+          <div className="mt-14 grid max-w-[390px] grid-cols-2 border-t border-[#d8dcd0] pt-5">
+            <div><p className="font-serif text-4xl">18</p><p className="eyebrow mt-2">PRIVATE STAYS</p></div>
+            <div><p className="font-serif text-4xl">01</p><p className="eyebrow mt-2">ISLAND TO EXPLORE</p></div>
+          </div>
+        </div>
+        <div className="story-image-wrap relative min-h-[480px] sm:min-h-[650px]">
+          <Image src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1600&q=90&fit=crop" alt="A serene pool framed by tropical resort greenery" fill unoptimized sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover"/>
+          <div className="image-caption"><span>01 — A SENSE OF PLACE</span><span>VERDE RETREAT · PHU QUOC</span></div>
+        </div>
+      </section>
 
-      <section id="experience" className="mx-auto max-w-[1440px] px-5 py-16 sm:px-8 lg:px-14 lg:py-24"><div className="flex flex-wrap items-end justify-between gap-5"><div><p className="text-[9px] tracking-[.2em] text-[#849477]">MAKE THE MOST OF SLOW</p><h2 className="mt-3 font-serif text-4xl tracking-[-.045em] sm:text-6xl">Experiences, naturally.</h2></div><p className="max-w-xs text-[11px] leading-6 text-[#78867a]">A few thoughtful ways to discover the island, at your own pace.</p></div><div className="mt-9 grid gap-5 md:grid-cols-3">{experiences.map((item)=><article key={item.title} className="group"><div className="relative aspect-[5/4] overflow-hidden bg-[#dfe4d8]"><Image src={item.image} alt={item.title} fill unoptimized sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.04]"/></div><p className="mt-5 text-[8px] tracking-[.17em] text-[#849477]">{item.time}</p><h3 className="mt-2 font-serif text-2xl">{item.title}</h3><p className="mt-2 max-w-sm text-[11px] leading-6 text-[#78867a]">{item.copy}</p></article>)}</div></section>
+      <section id="stay" className="stay-section bg-[#e8ebe1] px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
+        <div className="mx-auto max-w-[1360px]">
+          <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+            <div><SectionEyebrow>YOUR OWN PRIVATE WORLD</SectionEyebrow><h2 className="editorial-heading mt-5 font-serif text-5xl tracking-[-.055em] sm:text-7xl">The stays.</h2></div>
+            <p className="max-w-[360px] text-[12px] leading-6 text-[#718074]">Different spaces, one shared feeling: the freedom to slow down and settle in.</p>
+          </div>
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            {stays.map((stay) => (
+              <article key={stay.number} className="stay-card group">
+                <div className="stay-image relative aspect-[4/4.6] overflow-hidden bg-[#d8ded2]">
+                  <Image src={stay.image} alt={stay.name} fill unoptimized sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.045]"/>
+                  <span className="absolute left-5 top-5 bg-[#f4f2e9] px-3 py-2 text-[8px] tracking-[.17em]">{stay.category}</span>
+                  <span className="stay-number absolute bottom-4 right-5 font-serif text-5xl text-white">{stay.number}</span>
+                </div>
+                <div className="pt-6">
+                  <div className="flex items-start justify-between gap-4"><h3 className="font-serif text-[2rem] leading-none tracking-[-.035em]">{stay.name}</h3><span className="pt-1 text-[10px] text-[#778477]">{stay.size}</span></div>
+                  <p className="mt-4 min-h-[52px] text-[11px] leading-6 text-[#718074]">{stay.note}</p>
+                  <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#cfd6c9] py-4 text-[10px] text-[#718074]"><span className="inline-flex items-center gap-2"><UsersIcon />{stay.guests}</span><span className="inline-flex items-center gap-2"><BedDouble size={13}/>{stay.number === "03" ? "2 bedrooms" : "1 king bed"}</span></div>
+                  <div className="flex items-end justify-between border-t border-[#cfd6c9] pt-4">
+                    <div><p className="eyebrow">FROM / NIGHT</p><p className="mt-1 text-[14px]">{stay.price}</p></div>
+                    <a href="#enquire" aria-label={"Enquire about " + stay.name} className="round-link"><ArrowUpRight size={17}/></a>
+                  </div>
+                  <ul className="mt-5 space-y-2">{stay.features.map((feature) => <li key={feature} className="flex items-center gap-2 text-[10px] text-[#718074]"><Check size={12} className="text-[#849579]"/>{feature}</li>)}</ul>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="mt-8 text-[9px] leading-5 text-[#879287]">Rates shown are illustrative template content. Confirm seasonal pricing and availability with the retreat before publishing.</p>
+        </div>
+      </section>
 
-      <section id="enquire" className="bg-[#29483b] px-5 py-16 text-white sm:px-8 lg:px-14 lg:py-24"><div className="mx-auto grid max-w-[1320px] gap-8 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="text-[9px] tracking-[.2em] text-[#c4d0b6]">YOUR ISLAND TIME STARTS HERE</p><h2 className="mt-4 max-w-3xl font-serif text-5xl leading-[.96] tracking-[-.04em] sm:text-7xl">Let’s plan a stay<br/><em className="font-normal">that feels like yours.</em></h2><p className="mt-5 max-w-lg text-[12px] leading-6 text-white/65">Choose a villa above, then contact the retreat team to confirm dates, rates and availability.</p></div><a href="#stay" className="inline-flex items-center gap-8 border border-white/65 px-6 py-4 text-[9px] tracking-[.14em] transition hover:bg-white hover:text-[#29483b]">EXPLORE THE VILLAS <ArrowRight size={14}/></a></div></section>
-      <footer className="bg-[#1e342b] px-5 py-9 text-white sm:px-8 lg:px-14"><div className="mx-auto flex max-w-[1320px] flex-wrap items-end justify-between gap-6"><div><p className="font-serif text-2xl tracking-[.18em]">VERDE</p><p className="mt-2 text-[8px] tracking-[.17em] text-white/50">A QUIETER PLACE ON PHU QUOC ISLAND</p></div><div className="text-[9px] leading-6 tracking-[.1em] text-white/60"><p>PHU QUOC ISLAND · VIETNAM</p><p>ACCOMMODATION · EXPERIENCES · NATURE</p></div><span className="text-[8px] tracking-[.14em] text-white/40">© 2026 VERDE RETREAT</span></div></footer>
+      <section id="rituals" className="px-5 py-20 sm:px-8 lg:px-14 lg:py-28">
+        <div className="mx-auto max-w-[1360px]">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div><SectionEyebrow>FOLLOW YOUR OWN RHYTHM</SectionEyebrow><h2 className="editorial-heading mt-5 max-w-3xl font-serif text-5xl tracking-[-.055em] sm:text-7xl">Little moments.<br/><em className="font-normal">Lasting memories.</em></h2></div>
+            <p className="max-w-[310px] pb-1 text-[12px] leading-6 text-[#718074]">The best parts of a journey are often the moments you never planned.</p>
+          </div>
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {rituals.map((ritual) => (
+              <article key={ritual.number} className="ritual-card group">
+                <div className="relative aspect-[4/4.7] overflow-hidden bg-[#d8ded2]"><Image src={ritual.image} alt={ritual.title} fill unoptimized sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition duration-700 group-hover:scale-[1.04]"/></div>
+                <div className="mt-5 flex items-center justify-between"><SectionEyebrow>{ritual.eyebrow}</SectionEyebrow><span className="font-serif text-xl text-[#a0aa99]">{ritual.number}</span></div>
+                <h3 className="mt-3 font-serif text-[1.8rem] tracking-[-.03em]">{ritual.title}</h3>
+                <p className="mt-2 max-w-sm text-[11px] leading-6 text-[#718074]">{ritual.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="quote-section relative overflow-hidden bg-[#29483b] px-5 py-24 text-center text-white sm:px-8 lg:py-36">
+        <div className="relative z-10 mx-auto max-w-4xl"><Sparkles className="mx-auto mb-8 text-[#c9d1b9]" size={21}/><p className="eyebrow text-[#c9d1b9]">A NOTE TO YOUR FUTURE SELF</p><blockquote className="mt-7 font-serif text-4xl leading-[1.08] tracking-[-.04em] sm:text-6xl lg:text-7xl">“Somewhere between the forest and the sea, you will find your pace again.”</blockquote><p className="mt-9 text-[8px] tracking-[.25em] text-white/55">THE VERDE WAY</p></div>
+        <span className="absolute -bottom-24 left-1/2 -translate-x-1/2 font-serif text-[24rem] leading-none text-white/[.025]">V</span>
+      </section>
+
+      <section id="enquire" className="enquire-section grid bg-[#f4f2e9] lg:grid-cols-[1.1fr_.9fr]">
+        <div className="flex flex-col justify-center px-5 py-20 sm:px-10 lg:px-20 lg:py-32">
+          <SectionEyebrow>YOUR ISLAND TIME STARTS HERE</SectionEyebrow>
+          <h2 className="editorial-heading mt-6 max-w-2xl font-serif text-5xl leading-[.94] tracking-[-.055em] sm:text-7xl">The island is<br/>calling <em className="font-normal">you.</em></h2>
+          <p className="mt-7 max-w-md text-[12px] leading-7 text-[#718074]">Tell us what a perfect escape looks like. Our team can help you find the right space and plan your stay.</p>
+          <a href="#stay" className="text-link mt-9 w-fit">EXPLORE THE STAYS <ArrowRight size={15}/></a>
+        </div>
+        <div className="enquire-image relative min-h-[420px] sm:min-h-[560px]">
+          <Image src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1600&q=90&fit=crop" alt="Gentle tropical sea at golden hour" fill unoptimized sizes="(max-width: 1024px) 100vw, 45vw" className="object-cover"/>
+          <div className="absolute inset-0 bg-[#1c382d]/15"/>
+          <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between text-white"><div><p className="eyebrow text-white/70">PHU QUOC · VIETNAM</p><p className="mt-2 font-serif text-3xl">See you by the sea.</p></div><Waves size={25}/></div>
+        </div>
+      </section>
+
+      <footer className="bg-[#1d342a] px-5 py-10 text-white sm:px-8 lg:px-14">
+        <div className="mx-auto max-w-[1360px]">
+          <div className="flex flex-col justify-between gap-10 border-b border-white/15 pb-10 md:flex-row md:items-end">
+            <div><a href="#top" className="brand-mark text-3xl">VERDE<span>®</span></a><p className="mt-3 text-[8px] tracking-[.2em] text-white/50">A QUIETER PLACE ON PHU QUOC ISLAND</p></div>
+            <div className="grid grid-cols-2 gap-x-12 gap-y-3 text-[9px] tracking-[.14em] text-white/65"><a href="#stay">THE STAYS</a><a href="#story">OUR PLACE</a><a href="#rituals">EXPERIENCES</a><a href="#enquire">ENQUIRIES</a></div>
+            <a href="#top" className="flex items-center gap-2 text-[9px] tracking-[.14em] text-white/70">BACK TO TOP <ArrowUpRight size={13}/></a>
+          </div>
+          <div className="flex flex-col justify-between gap-3 pt-6 text-[8px] tracking-[.13em] text-white/40 sm:flex-row"><span>PHU QUOC ISLAND · VIETNAM</span><span>© 2026 VERDE RETREAT</span></div>
+        </div>
+      </footer>
     </main>
   );
+}
+
+function UsersIcon() {
+  return <Compass size={13}/>;
 }
